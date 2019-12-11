@@ -1,0 +1,16 @@
+body {
+  h1 {
+    text-align: center;
+  }
+  .container {
+    text-align: center;
+    #text {
+      width: 20%;
+      padding: 1%;
+      font-size: 20px;
+      border-radius: 26px;
+      outline: none;
+      border: 1px solid #000;
+    }
+  }
+}
