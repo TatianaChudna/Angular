@@ -1,3 +1,7 @@
-<app-child [value]="number" (changeNumber)="number = $event"></app-child>
-<button (click)="addNumber()">+</button>
-<p>{{number}}</p>
+<!--<app-child [value]="number" (changeNumber)="number = $event"></app-child>-->
+<!--<button (click)="addNumber()">+</button>-->
+<!--<p>{{number}}</p>-->
+<app-child [item]="currentItem" (newItemEvent)="addItem($event)"></app-child>
+<ul>
+  <li *ngFor="let item of items">{{item}}</li>
+</ul>

@@ -6,11 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./parent.component.scss']
 })
 export class ParentComponent implements OnInit {
-  public number = 0;
+  currentItem = 'Television';
+  items = ['item1', 'item2', 'item3', 'item4'];
 
-  public addNumber() {
-    this.number++;
+  addItem(newItem: string) {
+    this.items.push(newItem);
   }
+  // public number = 0;
+  //
+  // public addNumber() {
+  //   this.number++;
+  // }
   constructor() { }
 
   ngOnInit() {
