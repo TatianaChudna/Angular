@@ -9,10 +9,9 @@ let object = {text1: '', text2: '', text3: ''};
 keyupFirst.pipe(
     map((event) => event.currentTarget),
 ).subscribe(element => {
-    let p = document.querySelector('[data-input=' + element.id + ']');
-    p.innerText = element.value;
+    let paragraph = document.querySelector(`[data-input=${element.id}]`);
+    paragraph.innerText = element.value;
     object[element.id] = element.value;
-    console.log(object);
 });
 
 //Second task
@@ -26,23 +25,18 @@ let amountSelected = document.getElementById('amount');
 
 function listFilter() {
     let list = document.querySelectorAll('#todos li');
-    let note = input.value;
-    let regex = new RegExp(note, 'gi');
+    let regex = new RegExp(input.value, 'gi');
 
-    list.forEach(function (element) {
+    list.forEach((element) => {
         let text = element.querySelector('span').innerText.toLowerCase();
 
-        if (text.match(regex)) {
-            element.classList.remove('hiden');
-        } else {
-            element.classList.add('hiden');
-        }
+        text.match(regex) ? element.classList.remove('hiden') : element.classList.add('hiden');
     });
 }
 
 function displayAllItems() {
     let list = document.querySelectorAll('#todos li');
-    list.forEach(function (element) {
+    list.forEach((element) => {
         element.classList.remove('hiden');
     });
 }
@@ -52,11 +46,10 @@ function createTodo() {
     let label = document.createElement('label');
     let checkbox = document.createElement('input');
     let span = document.createElement('span');
-    let newNote = input.value;
 
     checkbox.type = 'checkbox';
     label.classList.add('todo-text');
-    span.innerText = newNote;
+    span.innerText = input.value;
     label.prepend(checkbox);
     label.append(span);
     li.append(label);
@@ -67,6 +60,20 @@ function createTodo() {
 
 function getCheckedCheckboxes() {
     return document.querySelectorAll('input[type=checkbox]:checked');
+}
+
+function changeColor(mode) {
+    let checked = getCheckedCheckboxes();
+
+    checked.forEach((element) => {
+        if (mode === 'select') {
+            element.parentElement.classList.add('green');
+            element.checked = false;
+        } else {
+            element.parentElement.classList.remove('green');
+            element.checked = false;
+        }
+    });
 }
 
 fromEvent(input, 'keyup').subscribe((event) => {
@@ -92,34 +99,20 @@ fromEvent(save, 'click').subscribe(() => {
 fromEvent(remove, 'click').subscribe(() => {
     let checked = getCheckedCheckboxes();
 
-    checked.forEach(function (element) {
-        element.parentElement.parentElement.remove();
-    });
+    checked.forEach((element) => element.parentElement.parentElement.remove());
 });
 
 fromEvent(select, 'click').subscribe(() => {
-    let checked = getCheckedCheckboxes();
-
-    checked.forEach(function (element) {
-        element.parentElement.style.color = '#159966';
-        element.checked = false;
-    });
+    changeColor('select');
 });
 
 fromEvent(unSelect, 'click').subscribe(() => {
-    let checked = getCheckedCheckboxes();
-
-    checked.forEach(function (element) {
-        element.parentElement.style.color = '#000';
-        element.checked = false;
-    });
+    changeColor('unSelect');
 });
 
 fromEvent(amountSelected, 'click').subscribe(() => {
     let checked = getCheckedCheckboxes();
 
     alert(checked.length);
-    checked.forEach(function (element) {
-        element.checked = false;
-    });
+    checked.forEach((element) => element.checked = false);
 });

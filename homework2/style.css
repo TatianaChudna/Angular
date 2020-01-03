@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:300i,400i,500i,600i,700i&display=swap');
 
+.green {
+  color: #159966;
+}
+
 .first {
   display: flex;
   justify-content: flex-end;
