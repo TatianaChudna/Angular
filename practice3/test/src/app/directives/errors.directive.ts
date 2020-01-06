@@ -32,10 +32,10 @@ export class ErrorsDirective {
 
     if (element.value.length > 5) {
       showError.textContent = 'Length should be no more than 5 characters!';
-      element.style.border = '2px solid red';
+      element.classList.add('border');
     } else {
       showError.textContent = '';
-      element.style.border = '1px solid black';
+      element.classList.remove('border');
     }
   }
 }

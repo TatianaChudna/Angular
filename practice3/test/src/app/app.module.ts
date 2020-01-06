@@ -6,12 +6,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ParentComponent } from './components/parent/parent.component';
 import { ChildComponent } from './components/parent/child/child.component';
+import { CustomPipe } from './pipes/custom.pipe';
+import { ErrorsDirective } from './directives/errors.directive';
+import { PracticeComponent } from './components/practice/practice.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ParentComponent,
-    ChildComponent
+    ChildComponent,
+    CustomPipe,
+    ErrorsDirective,
+    PracticeComponent
   ],
   imports: [
     BrowserModule,
